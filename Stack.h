@@ -5,21 +5,9 @@
 #ifndef Stack_H
 #define Stack_H
 
-//edge class for usage in stack and Graph
-class Edge{
-    private:
-    int vertex1;
-    int vertex2;
-    int weight;
-    
-    public:
-    Edge(int,int,int);
-    int getVert1();
-    int getVert2();
-    int getWeight();
+#include "LinkedList.h"
+using namespace std;
 
-    friend class Stack;
-};
 //stack class for use in graph (Look at: DFS() and DFS_VISIT())
 class Stack{
     private:
@@ -30,7 +18,7 @@ class Stack{
     public:
     Stack(int);
     ~Stack();
-    bool push(int,int,int);
+    bool push(int,int,int,bool);
     Edge* pop();
     void printHorizontal();
     void printVertical();

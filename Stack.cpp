@@ -1,26 +1,9 @@
 #include "Stack.h"
+#include "LinkedList.h"
 #include <cstdlib>
 #include <iostream>
 
 using namespace std;
-
-//edge constructor
-Edge::Edge(int vert1, int vert2, int newWeight){
-    vertex1=vert1;
-    vertex2=vert2;
-    weight=newWeight;
-}
-
-//getters of edge attributes
-int Edge::getVert1(){
-    return vertex1;
-}
-int Edge::getVert2(){
-    return vertex2;
-}
-int Edge::getWeight(){
-    return weight;
-}
 
 //stack constructor
 Stack::Stack(int edges){
@@ -33,12 +16,12 @@ Stack::~Stack(){
     delete[] stk;
 }
 //push an element onto the stack
-bool Stack::push(int vert1, int vert2, int weight){  
+bool Stack::push(int vert1, int vert2, int weight,bool virt){  
   if(top>=max-1){
         return false;
     }
   top++;
-    stk[top]= new Edge(vert1,vert2,weight);
+    stk[top]= new Edge(vert1,vert2,weight,virt);
     return true;
 }
 //pop an element from the stack
@@ -48,17 +31,6 @@ Edge* Stack::pop(){
     }
     top--;
     return stk[top+1];
-}
-//print stack values in horizontal format: (1,2) (3,4) (5,6) ...
-void Stack::printHorizontal(){
-    if(top==-1){
-        cout <<"Empty";
-    }
-    else{
-        for(int i=0; i<=top; i++){
-            cout << "(" << stk[i]->vertex1 << "," << stk[i]->vertex2 << ") ";
-        }
-    }
 }
 /*print stack in vertical format:
 (1,2)
@@ -70,7 +42,18 @@ void Stack::printVertical(){
     }
     else{
         for(int i=0; i<=top; i++){
-            cout << "(" << stk[i]->vertex1 << "," << stk[i]->vertex2 << ")\n";
+            cout << "(" << stk[i]->vert1 << "," << stk[i]->vert2 << ")\n";
+        }
+    }
+}
+//print stack values in horizontal format: (1,2) (3,4) (5,6) ...
+void Stack::printHorizontal(){
+    if(top==-1){
+        cout <<"Empty";
+    }
+    else{
+        for(int i=0; i<=top; i++){
+            cout << "(" << stk[i]->vert1 << "," << stk[i]->vert2 << ") ";
         }
     }
 }
