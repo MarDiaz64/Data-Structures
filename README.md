@@ -1,2 +1,2 @@
 # Data-Structures
-Various Implementations of common data structures.
+These will be a repository of implementations of various common data structures.
